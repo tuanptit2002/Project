@@ -13,10 +13,10 @@ public class TimeTeachServiceImpl implements TimeTeachService{
     TimeTeachRepository timeTeachRepository;
 
     @Override
-    public String create(TimeTeachDTO timeTeachDTO){
+    public void create(TimeTeachDTO timeTeachDTO){
         TimeTeach timeTeach = new TimeTeach();
         timeTeach.setName(timeTeachDTO.getName());
         timeTeachRepository.save(timeTeach);
-        return "thành công";
+//        return "thành công";
     }
 }
