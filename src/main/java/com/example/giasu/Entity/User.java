@@ -38,6 +38,8 @@ public class User {
     private String yearOfAdmission;
     // nam tot nghiep
     private String graduationYear;
+
+    private String request;
     @ManyToMany
     @JoinTable(name = "use_district", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "district_id"))

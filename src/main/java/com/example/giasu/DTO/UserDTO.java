@@ -49,4 +49,6 @@ public class UserDTO {
     private String cityDTO;
 
     private List<String> timeTeachDTO = new ArrayList<>();
+
+    private String request ;
 }

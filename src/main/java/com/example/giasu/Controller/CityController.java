@@ -1,7 +1,7 @@
 package com.example.giasu.Controller;
 
-import com.example.giasu.DTO.UserDTO;
-import com.example.giasu.Service.UserService;
+import com.example.giasu.DTO.CityDTO;
+import com.example.giasu.Service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,15 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/user")
-public class UserController {
+@RequestMapping("/api/v1/city")
+public class CityController {
+
     @Autowired
-    UserService userService;
+    CityService cityService;
 
     @PostMapping("/create")
-    public String create(@RequestBody UserDTO userDTO) {
-        return userService.createTutor(userDTO);
+    public String create(@RequestBody CityDTO cityDTO){
+        return cityService.create(cityDTO);
     }
-
 }
-
