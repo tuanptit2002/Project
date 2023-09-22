@@ -6,4 +6,5 @@ import com.example.giasu.Entity.User;
 
 public interface UserService {
     public String createTutor(UserDTO userDTO);
+    public String createFindTutor(UserDTO userDTO);
 }

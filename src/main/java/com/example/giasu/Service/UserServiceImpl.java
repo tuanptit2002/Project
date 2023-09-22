@@ -34,6 +34,8 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     SubjectRepository subjectRepository;
+
+    @Override
     public String createTutor(UserDTO userDTO){
         RespondDTO<User> userRespondDTO = new RespondDTO<>();
         User user = new User();
@@ -79,5 +81,17 @@ public class UserServiceImpl implements UserService {
         return "Thành Công";
     }
 
-
+    @Override
+    public String createFindTutor(UserDTO userDTO){
+        User user = new User();
+        user.setFullName(userDTO.getFullName());
+        user.setAddress(userDTO.getAddress());
+        user.setPhone(userDTO.getPhone());
+//        if(!userDTO.getTutor().isEmpty()){
+//
+//        }
+        user.setRequest(userDTO.getRequest());
+        userRepository.save(user);
+        return "Thành công";
+    }
 }
