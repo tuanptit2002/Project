@@ -1,6 +1,7 @@
 package com.example.giasu.Controller;
 
 import com.example.giasu.DTO.CityDTO;
+import com.example.giasu.DTO.SuccessDTO;
 import com.example.giasu.Service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +17,9 @@ public class CityController {
     CityService cityService;
 
     @PostMapping("/create")
-    public String create(@RequestBody CityDTO cityDTO){
-        return cityService.create(cityDTO);
+    public SuccessDTO<String> create(@RequestBody CityDTO cityDTO) {
+
+        cityService.create(cityDTO);
+        return new SuccessDTO<>("Thành công");
     }
 }

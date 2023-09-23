@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
     SubjectRepository subjectRepository;
 
     @Override
-    public String createTutor(UserDTO userDTO){
+    public void createTutor(UserDTO userDTO){
         RespondDTO<User> userRespondDTO = new RespondDTO<>();
         User user = new User();
         user.setCity(cityRepository.findByName(userDTO.getCityDTO()));
@@ -78,11 +78,11 @@ public class UserServiceImpl implements UserService {
         user.setTimeTeaches(timeTeaches);
         userRepository.save(user);
 //        userRespondDTO.setResult(user);
-        return "Thành Công";
+//        return "Thành Công";
     }
 
     @Override
-    public String createFindTutor(UserDTO userDTO){
+    public void createFindTutor(UserDTO userDTO){
         User user = new User();
         user.setFullName(userDTO.getFullName());
         user.setAddress(userDTO.getAddress());
@@ -92,6 +92,6 @@ public class UserServiceImpl implements UserService {
 //        }
         user.setRequest(userDTO.getRequest());
         userRepository.save(user);
-        return "Thành công";
+//        return "Thành công";
     }
 }
