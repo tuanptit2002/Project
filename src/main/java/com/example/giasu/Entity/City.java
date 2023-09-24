@@ -1,5 +1,6 @@
 package com.example.giasu.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -15,6 +16,10 @@ public class City {
     private String name;
     @OneToMany(mappedBy = "city")
     List<User> users = new ArrayList<>();
+    @JsonIgnore
     @OneToMany(mappedBy = "city")
     List<District> districts = new ArrayList<>();
+    @JsonIgnore
+    @OneToMany(mappedBy = "city")
+    private List<Class> classes = new ArrayList<>();
 }
