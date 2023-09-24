@@ -1,5 +1,6 @@
 package com.example.giasu.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -40,19 +41,23 @@ public class User {
     private String graduationYear;
 
     private String request;
+    @JsonIgnore
     @ManyToMany
     @JoinTable(name = "use_district", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "district_id"))
     List<District> districts = new ArrayList<>();
     @ManyToMany(mappedBy = "users")
     private List<Subject> subjects = new ArrayList<>();
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     List<Class> classes = new ArrayList<>();
     @ManyToOne
     @JoinColumn(name = "majored_id")
     private Majored majored;
+    @JsonIgnore
     @ManyToMany(mappedBy = "users")
     List<TeachClass> teachClasses = new ArrayList<>();
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "city_id")
     private City city;
