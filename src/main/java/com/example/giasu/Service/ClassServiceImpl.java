@@ -32,12 +32,16 @@ public class ClassServiceImpl implements ClassService {
     @Autowired
     DistrictRepository districtRepository;
 
+    @Autowired
+    SubjectRepository subjectRepository;
     @Override
     public void create(ClassDTO classDTO) {
         Class aClass = new Class();
-        aClass.setSubject(classDTO.getSubject());
+        aClass.setSubject(subjectRepository.findById(
+                classDTO.getSubject()).orElseThrow(() -> new RuntimeException("subject is valid")));
         List<TeachClass> teachClasses = new ArrayList<>();
-        teachClasses.add(teachClassRepository.findById(classDTO.getClassRoom()).orElseThrow(() -> new RuntimeException("classroom is validate")));
+        teachClasses.add(teachClassRepository.findById(
+                classDTO.getClassRoom()).orElseThrow(() -> new RuntimeException("classroom is validate")));
         aClass.setTeachClasses(teachClasses);
         aClass.setDistricts(classDTO.getDistricts());
         aClass.setPrice(classDTO.getPrice());

@@ -18,4 +18,7 @@ public class Subject {
     @JoinTable(name = "subject_user", joinColumns = @JoinColumn(name = "subject_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))
     private List<User> users = new ArrayList<>();
+
+    @OneToMany(mappedBy = "subject")
+    private List<Class> classes = new ArrayList<>();
 }

@@ -18,8 +18,8 @@ public class Class {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    // môn học
-    private String subject;
+
+
 //    // lớp
 //    private String classRoom;
     // địa ch sinh viên
@@ -57,4 +57,8 @@ public class Class {
     @ManyToMany
     @JoinTable(name = "class-teachClass", joinColumns = @JoinColumn(name = "class_id"), inverseJoinColumns = @JoinColumn(name = "teachClass_id"))
     List<TeachClass> teachClasses = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "subject_id")
+    private Subject subject;
 }

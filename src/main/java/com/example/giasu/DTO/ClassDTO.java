@@ -6,7 +6,7 @@ import lombok.Data;
 public class ClassDTO {
 
     private Long id ;
-    private String subject;
+    private long subject;
     private Long classRoom;
     private String districts;
     private String price;

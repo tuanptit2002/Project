@@ -25,8 +25,9 @@ public class CityServiceImpl implements CityService{
         City city = new City();
         city.setName(cityDTO.getName());
         City city1 =cityRepository.save(city);
-        List<District> districts = new ArrayList<>();
-        for(DistrictDTO districtDTO : cityDTO.getDistrictDTOS()){
+        for(String district : cityDTO.getDistrictDTOS()){
+            DistrictDTO districtDTO = new DistrictDTO();
+            districtDTO.setName(district);
             districtDTO.setCityDTO(city1.getName());
             districtService.create(districtDTO);
         }

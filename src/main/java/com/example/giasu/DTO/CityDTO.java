@@ -9,5 +9,5 @@ import java.util.List;
 @Data
 public class CityDTO {
     private String name;
-    private List<DistrictDTO> districtDTOS = new ArrayList<>();
+    private List<String> districtDTOS = new ArrayList<>();
 }
