@@ -2,6 +2,7 @@ package com.example.giasu.Service;
 
 import com.example.giasu.DTO.CityDTO;
 import com.example.giasu.DTO.DistrictDTO;
+import com.example.giasu.DTO.RespondDTO;
 import com.example.giasu.Entity.City;
 import com.example.giasu.Entity.District;
 import com.example.giasu.Repository.CityRepository;
@@ -32,5 +33,13 @@ public class CityServiceImpl implements CityService{
             districtService.create(districtDTO);
         }
        return "thanh cong";
+    }
+
+    @Override
+    public RespondDTO<List<City>> findAll(){
+        List<City> cities = cityRepository.findAll();
+        RespondDTO<List<City>> respondDTO = new RespondDTO<>();
+        respondDTO.setResult(cities);
+        return respondDTO;
     }
 }

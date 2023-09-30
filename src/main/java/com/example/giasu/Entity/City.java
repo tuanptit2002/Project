@@ -14,6 +14,8 @@ public class City {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+
+    @JsonIgnore
     @OneToMany(mappedBy = "city")
     List<User> users = new ArrayList<>();
     @JsonIgnore
