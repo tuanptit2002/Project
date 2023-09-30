@@ -46,6 +46,7 @@ public class User {
     @JoinTable(name = "use_district", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "district_id"))
     List<District> districts = new ArrayList<>();
+
     @ManyToMany(mappedBy = "users")
     private List<Subject> subjects = new ArrayList<>();
     @JsonIgnore

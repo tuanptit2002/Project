@@ -1,5 +1,6 @@
 package com.example.giasu.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -18,7 +19,7 @@ public class Subject {
     @JoinTable(name = "subject_user", joinColumns = @JoinColumn(name = "subject_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))
     private List<User> users = new ArrayList<>();
-
+    @JsonIgnore
     @OneToMany(mappedBy = "subject")
     private List<Class> classes = new ArrayList<>();
 }
