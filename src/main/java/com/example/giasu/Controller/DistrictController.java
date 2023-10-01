@@ -4,10 +4,7 @@ import com.example.giasu.DTO.RespondDTO;
 import com.example.giasu.Entity.District;
 import com.example.giasu.Service.DistrictService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,5 +19,10 @@ public class DistrictController {
     @PostMapping("/find-all")
     public RespondDTO<List<District>> findAll(){
         return districtService.findAll();
+    }
+
+    @PostMapping("/find-district-to-city")
+    public RespondDTO<List<District>> findDistrictToCity(@RequestParam Long id){
+        return districtService.findDistrictToCity(id);
     }
 }

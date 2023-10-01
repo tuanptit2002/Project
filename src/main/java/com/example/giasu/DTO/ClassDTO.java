@@ -2,12 +2,15 @@ package com.example.giasu.DTO;
 
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 public class ClassDTO {
 
     private Long id ;
-    private long subject;
-    private Long classRoom;
+    private List<Long> subject;
+//    private Long classRoom;
     private String districts;
     private String price;
     // số buổi trên 1 tuần
@@ -26,6 +29,8 @@ public class ClassDTO {
     private Long districtDTO;
 
     private Long levelSchool;
+
+    private List<Long> teachClass = new ArrayList<>();
 
     private Long city;
 }

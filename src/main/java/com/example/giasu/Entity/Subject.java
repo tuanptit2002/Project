@@ -20,6 +20,6 @@ public class Subject {
             inverseJoinColumns = @JoinColumn(name = "user_id"))
     private List<User> users = new ArrayList<>();
     @JsonIgnore
-    @OneToMany(mappedBy = "subject")
+    @ManyToMany(mappedBy = "subjects")
     private List<Class> classes = new ArrayList<>();
 }
