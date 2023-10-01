@@ -36,4 +36,12 @@ public class DistrictServiceImpl implements DistrictService{
         respondDTO.setResult(districts);
         return respondDTO;
     }
+
+    @Override
+    public RespondDTO<List<District>> findDistrictToCity(Long id){
+        List<District> districts = districtRepository.findByDistrictToCity(id);
+        RespondDTO<List<District>> respondDTO = new RespondDTO<>();
+        respondDTO.setResult(districts);
+        return respondDTO;
+    }
 }

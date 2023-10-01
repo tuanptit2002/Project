@@ -58,7 +58,7 @@ public class Class {
     @JoinTable(name = "class-teachClass", joinColumns = @JoinColumn(name = "class_id"), inverseJoinColumns = @JoinColumn(name = "teachClass_id"))
     List<TeachClass> teachClasses = new ArrayList<>();
 
-    @ManyToOne
-    @JoinColumn(name = "subject_id")
-    private Subject subject;
+    @ManyToMany
+    @JoinTable(name = "class-subject", joinColumns = @JoinColumn(name = "class_id"), inverseJoinColumns = @JoinColumn(name = "subject_id"))
+    private List<Subject> subjects = new ArrayList<>();
 }

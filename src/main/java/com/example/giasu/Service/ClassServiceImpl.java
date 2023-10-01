@@ -3,6 +3,7 @@ package com.example.giasu.Service;
 import com.example.giasu.DTO.ClassDTO;
 import com.example.giasu.DTO.FilterClassDTO;
 import com.example.giasu.Entity.Class;
+import com.example.giasu.Entity.Subject;
 import com.example.giasu.Entity.TeachClass;
 import com.example.giasu.Repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,11 +38,15 @@ public class ClassServiceImpl implements ClassService {
     @Override
     public void create(ClassDTO classDTO) {
         Class aClass = new Class();
-        aClass.setSubject(subjectRepository.findById(
-                classDTO.getSubject()).orElseThrow(() -> new RuntimeException("subject is valid")));
+        List<Subject> subjects = new ArrayList<>();
+        for (Long i : classDTO.getSubject()){
+            subjects.add(subjectRepository.findById(i).orElseThrow(() -> new RuntimeException("subject is valid")));
+        }
+        aClass.setSubjects(subjects);
         List<TeachClass> teachClasses = new ArrayList<>();
-        teachClasses.add(teachClassRepository.findById(
-                classDTO.getClassRoom()).orElseThrow(() -> new RuntimeException("classroom is validate")));
+       for(long i : classDTO.getTeachClass()){
+           teachClasses.add(teachClassRepository.findById(i).orElseThrow(() -> new RuntimeException("classroom is validate")));
+       }
         aClass.setTeachClasses(teachClasses);
         aClass.setDistricts(classDTO.getDistricts());
         aClass.setPrice(classDTO.getPrice());

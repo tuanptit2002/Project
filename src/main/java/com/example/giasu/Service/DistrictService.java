@@ -10,4 +10,6 @@ public interface DistrictService {
     public String create(DistrictDTO districtDTO);
 
     public RespondDTO<List<District>> findAll();
+
+    public RespondDTO<List<District>> findDistrictToCity(Long id);
 }
