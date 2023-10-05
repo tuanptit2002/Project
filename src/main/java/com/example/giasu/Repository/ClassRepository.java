@@ -16,8 +16,8 @@ public interface ClassRepository extends JpaRepository<Class, Long> {
             "district as dt on (c.district_id = dt.id) " +
             "inner join city as ct on (ct.id = c.city_id) inner join level_school as ls on (ls.id = c.levelschool_id)" +
             "inner join `class-teach_class` as ctc on(c.id = ctc.class_id) " +
-            "inner join teach_class as ts on (ts.id = ctc.teach_class_id) inner join class-subject as cs on (c.id = cs.class_id)" +
-            "inner join subject as sb on(cs.subject_id = sb.id)" +
+            "inner join teach_class as ts on (ts.id = ctc.teach_class_id) inner join `class-subject` as cs on (c.id = cs.class_id)" +
+            "inner join subject as sb on (cs.subject_id = sb.id)" +
             "where (?1 is null or c.id = ?1) and " +
             "(?2 is null or c.describes like concat('%', ?2, '%')) " +
             "and (?3 is null or ct.id = ?3) and " +
@@ -31,7 +31,7 @@ public interface ClassRepository extends JpaRepository<Class, Long> {
                     "inner join city as ct on (ct.id = c.city_id) " +
                     "inner join level_school as ls on (ls.id = c.levelschool_id) " +
                     "inner join `class-teach_class` as ctc on(c.id = ctc.class_id) " +
-                    "inner join teach_class as ts on (ts.id = ctc.teach_class_id) " +
+                    "inner join teach_class as ts on (ts.id = ctc.teach_class_id) inner join `class-subject` as cs on (c.id = cs.class_id) inner join subject as sb on (cs.subject_id = sb.id)" +
                     "where (?1 is null or c.id = ?1)" +
                     " and ?2 is null or c.describes like concat('%', ?2, '%') " +
                     "and (?3 is null or ct.id = ?3) and (?4 is null or dt.id = ?4) " +
