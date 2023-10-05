@@ -22,7 +22,7 @@ public class ClassController {
         return new SuccessDTO<>("Thành công");
     }
 
-    @PostMapping("/filter")
+        @PostMapping("/filter")
     public Page<Class> filter(@RequestBody FilterClassDTO filterClassDTO){
         return classService.filterClass(filterClassDTO);
     }

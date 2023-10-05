@@ -13,6 +13,6 @@ public class FilterClassDTO {
     private String requestLevel;
     private String requestSex;
     private Long id_levelSchool;
-    private String subject;
+    private Long subject;
     private Long classRoom;
 }
