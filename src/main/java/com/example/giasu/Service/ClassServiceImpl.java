@@ -69,7 +69,7 @@ public class ClassServiceImpl implements ClassService {
         Page<Class> aClass = classRepository.findClass(pageable,filterClassDTO.getId(),
                 filterClassDTO.getDescribes(),filterClassDTO.getId_city(),filterClassDTO.getId_district(),
                 filterClassDTO.getRequestLevel(),filterClassDTO.getRequestSex(),
-                filterClassDTO.getId_levelSchool(), filterClassDTO.getSubject(), filterClassDTO.getClassRoom());
+                filterClassDTO.getId_levelSchool(), filterClassDTO.getClassRoom(), filterClassDTO.getSubject());
             return aClass;
     }
 
