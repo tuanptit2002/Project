@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 
 public interface ClassRepository extends JpaRepository<Class, Long> {
 
-    @Query(value = "select c.id, c.describes, c.districts, c.price, c.request,c.district_id, c.user_id, " +
+    @Query(value = "select distinct (c.id), c.describes, c.districts, c.price, c.request,c.district_id, c.user_id, " +
             "c.information, c.number_sessions, c.time_teach, c.city_id, c.levelschool_id from class  as c inner join " +
             "district as dt on (c.district_id = dt.id) " +
             "inner join city as ct on (ct.id = c.city_id) inner join level_school as ls on (ls.id = c.levelschool_id)" +
