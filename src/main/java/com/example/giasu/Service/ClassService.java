@@ -10,4 +10,6 @@ public interface ClassService {
     public void create(ClassDTO classDTO);
 
     public Page<Class>  filterClass(FilterClassDTO filterClassDTO);
+
+    public Long TotalClass();
 }

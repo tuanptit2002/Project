@@ -26,5 +26,8 @@ public class ClassController {
     public Page<Class> filter(@RequestBody FilterClassDTO filterClassDTO){
         return classService.filterClass(filterClassDTO);
     }
-
+    @PostMapping("/get-total")
+    public Long getTotal(){
+        return classService.TotalClass();
+    }
 }

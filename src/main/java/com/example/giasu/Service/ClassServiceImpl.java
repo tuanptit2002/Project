@@ -73,5 +73,8 @@ public class ClassServiceImpl implements ClassService {
             return aClass;
     }
 
-
+    @Override
+    public Long TotalClass(){
+        return classRepository.Total();
+    }
 }

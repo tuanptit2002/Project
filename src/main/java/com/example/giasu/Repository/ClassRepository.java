@@ -39,4 +39,6 @@ public interface ClassRepository extends JpaRepository<Class, Long> {
                     "and (?6 is null or c.request like concat('%',?6,'%'))and (?7 is null or ls.id = ?7) and (?8 is null or ts.id = ?8) and (?9 is null or sb.id = ?9)")
     Page<Class> findClass(Pageable pageable, Long id_class, String describes, Long id_city,
                           Long id_district, String requestLevel, String requestSex, Long id_levelSchool, Long classRoom,Long subject);
+@Query("SELECT count(c.id) from Class  as c")
+    Long Total();
 }
