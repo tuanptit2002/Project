@@ -41,4 +41,29 @@ public interface ClassRepository extends JpaRepository<Class, Long> {
                           Long id_district, String requestLevel, String requestSex, Long id_levelSchool, Long classRoom,Long subject);
 @Query("SELECT count(c.id) from Class  as c")
     Long Total();
+
+@Query(value = "select distinct (c.id), c.describes, c.districts, c.price, c.request,c.district_id, c.user_id,c.information, c.number_sessions, c.time_teach, c.city_id, c.levelschool_id from class as c inner join `class-subject` as cs " +
+        "on (c.id = cs.class_id) inner join subject as sb on (sb.id = cs.subject_id) " +
+        "inner join city as ct on(ct.id = c.city_id) inner join" +
+        " district as dt on(dt.city_id = ct.id) inner join" +
+        " level_school as ls on(c.levelschool_id = ls.id) " +
+        "where (?1 is null or sb.id = ?1) and " +
+        "(?2 is null or ct.id = ?2) and " +
+        "(?3 is null or dt.id = ?3) and " +
+        "(?4 is null or ls.id = ?4) and " +
+        "(?5 is null or c.request like concat('%',?5,'%')) and (?6 is null or c.request like concat('%',?6,'%'))",
+        nativeQuery = true,
+        countQuery = "select distinct (c.id), c.describes, c.districts, c.price, c.request,c.district_id, c.user_id,c.information, c.number_sessions, c.time_teach, c.city_id, c.levelschool_id from class as c inner join `class-subject` as cs " +
+                "on (c.id = cs.class_id) inner join subject as sb on (sb.id = cs.subject_id) " +
+                "inner join city as ct on(ct.id = c.city_id) inner join" +
+                " district as dt on(dt.city_id = ct.id) inner join" +
+                " level_school as ls on(c.levelschool_id = ls.id) " +
+                "where (?1 is null or sb.id = ?1) and " +
+                "(?2 is null or ct.id = ?2) and " +
+                "(?3 is null or dt.id = ?3) and " +
+                "(?4 is null or ls.id = ?4) and " +
+                "(?5 is null or c.request like concat('%',?5,'%')) and (?6 is null or c.request like concat('%',?6,'%'))")
+
+    Page<Class> findClassU(Pageable pageable,Long id_subject, Long id_city, Long id_district, Long id_levelSchool, String level, String sex);
+
 }

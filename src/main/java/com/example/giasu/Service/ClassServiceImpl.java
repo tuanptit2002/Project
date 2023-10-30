@@ -74,6 +74,15 @@ public class ClassServiceImpl implements ClassService {
     }
 
     @Override
+    public Page<Class> filterClassPageUSer(FilterClassDTO filterClassDTO){
+        Pageable pageable = PageRequest.of(filterClassDTO.getPageNum(),filterClassDTO.getPageSize());
+        Page<Class> aClass = classRepository.findClassU(pageable,filterClassDTO.getSubject(),
+                filterClassDTO.getId_city(),filterClassDTO.getId_district(),
+                filterClassDTO.getId_levelSchool(), filterClassDTO.getRequestLevel(), filterClassDTO.getRequestSex());
+        return aClass;
+    }
+
+    @Override
     public Long TotalClass(){
         return classRepository.Total();
     }

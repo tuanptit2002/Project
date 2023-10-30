@@ -11,5 +11,6 @@ public interface ClassService {
 
     public Page<Class>  filterClass(FilterClassDTO filterClassDTO);
 
+    public Page<Class>  filterClassPageUSer(FilterClassDTO filterClassDTO);
     public Long TotalClass();
 }

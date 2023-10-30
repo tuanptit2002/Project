@@ -15,4 +15,6 @@ public class FilterClassDTO {
     private Long id_levelSchool;
     private Long subject;
     private Long classRoom;
+//    private String levelRequest;
+//    private String sex;
 }
