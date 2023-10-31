@@ -1,17 +1,20 @@
 package com.example.giasu.Service;
 
-import com.example.giasu.DTO.MajoredDTO;
 import com.example.giasu.DTO.RespondDTO;
 import com.example.giasu.DTO.UserDTO;
 import com.example.giasu.Entity.*;
 import com.example.giasu.Repository.*;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
     @Autowired
@@ -34,6 +37,12 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     SubjectRepository subjectRepository;
+
+    private final PasswordEncoder passwordEncoder;
+
+//    public UserServiceImpl(PasswordEncoder passwordEncoder) {
+//        this.passwordEncoder = passwordEncoder;
+//    }
 
     @Override
     public void createTutor(UserDTO userDTO){
@@ -93,5 +102,16 @@ public class UserServiceImpl implements UserService {
         user.setRequest(userDTO.getRequest());
         userRepository.save(user);
 //        return "Thành công";
+    }
+
+    @Override
+    public void singup(UserDTO userDTO){
+        User user = new User();
+        user.setFullName(userDTO.getEmail());
+        user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+        user.setPhone(userDTO.getPhone());
+        user.setEmail(userDTO.getEmail());
+        userRepository.save(user);
+
     }
 }
