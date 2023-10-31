@@ -15,6 +15,7 @@
     <description>GIASU</description>
     <properties>
         <java.version>17</java.version>
+        <spring-security.version>6.0.4</spring-security.version>
     </properties>
     <dependencies>
         <dependency>
