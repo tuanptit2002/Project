@@ -36,13 +36,13 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http, HandlerMappingIntrospector introspector) throws Exception {
         MvcRequestMatcher.Builder mvcMatcherBuilder = new MvcRequestMatcher.Builder(introspector).servletPath("/");
         http.csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(authz -> {
-                    authz.requestMatchers( mvcMatcherBuilder.pattern(HttpMethod.POST,"/api/v1/auth/**")).permitAll()
-                            .requestMatchers(mvcMatcherBuilder.pattern("/admin")).hasAnyAuthority("ROLE_ADMIN")
-                            .requestMatchers(mvcMatcherBuilder.pattern("/user")).hasAnyAuthority("ROLE_USER")
-                        .anyRequest()
-                        .authenticated();
-                })
+//                .authorizeHttpRequests(authz -> {
+//                    authz.requestMatchers( mvcMatcherBuilder.pattern(HttpMethod.POST,"/api/v1/auth/**")).permitAll()
+    //                            .requestMatchers(mvcMatcherBuilder.pattern("/admin")).hasAnyAuthority("ROLE_ADMIN")
+    //                            .requestMatchers(mvcMatcherBuilder.pattern("/user")).hasAnyAuthority("ROLE_USER")
+//                        .anyRequest()
+////                        .authenticated();
+//                })
                 .sessionManagement(httpSecuritySessionManagementConfigurer -> {
                     httpSecuritySessionManagementConfigurer
                         .sessionCreationPolicy(STATELESS);
